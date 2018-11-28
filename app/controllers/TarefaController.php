@@ -18,4 +18,20 @@ class TarefaController {
         $usuario = Tarefa::with('usuarios')->get()->toArray();
         return $usuario;
     }
+
+    public static function updateTarefa($idTarefa, $newTarefa) {
+        $tarefa = Tarefa::find($idTarefa);
+        
+        $tarefa->nome       = $newTarefa["nome"];
+        $tarefa->descricao  = $newTarefa["descricao"];
+
+        $update = $tarefa->save();
+        return $update;
+    }
+
+    public static function deleteTarefa($idTarefa) {
+        $tarefa = Tarefa::find($idTarefa);
+        $deleted = $tarefa->delete();
+        return $deleted;
+    }
 }
