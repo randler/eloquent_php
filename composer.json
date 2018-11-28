@@ -1,0 +1,14 @@
+{
+    "name": "illuminate-example/eloquent",
+    "description": "Implementação de pesquisas de Banco de dados com illuminate e eloquent",
+    "type": "project",
+    "require": {
+        "illuminate/database": "5.1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "app/controllers/",
+            "Models\\": "app/models/"
+        }
+    }
+}
