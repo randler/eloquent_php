@@ -13,8 +13,8 @@ class Tarefa extends Model {
         'usuarios_id'
     ];
 
-    public function usuarioPergunta()
+    public function usuarios()
     {
-        return $this->belongsTo('\Models\Usuario');
+        return $this->belongsTo('\Models\Usuarios');
     }
 }

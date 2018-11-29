@@ -18,4 +18,5 @@ class UsuarioController {
         $tarefas = Usuarios::with('tarefas')->get()->toArray();
         return $tarefas;
     }
+
 }
