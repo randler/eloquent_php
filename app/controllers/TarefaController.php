@@ -3,6 +3,8 @@ namespace Controllers;
 
 use Models\Tarefa;
 use Models\Usuarios;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class TarefaController {
 
@@ -15,21 +17,6 @@ class TarefaController {
         return $tarefa;
     }
 
-    public static function getLazy() {
-        echo "Lazy Loading \n";
-        $tarefas = Tarefa::all();
-        foreach ($tarefas as $tarefa) {
-            echo $tarefa->usuarios->nome ."\n";
-        }
-    }
-
-    public static function getEager() {
-        echo "Eager Loading \n";
-        $tarefas = Tarefa::with('usuarios')->get();
-        foreach ($tarefas as $tarefa) {
-            echo $tarefa->usuarios->nome ."\n";
-        }
-    }
 
     public static function updateTarefa($idTarefa, $newTarefa) {
         $tarefa = Tarefa::find($idTarefa);
@@ -46,4 +33,28 @@ class TarefaController {
         $deleted = $tarefa->delete();
         return $deleted;
     }
+
+    public static function getLazy()
+    {
+        $tarefas = Tarefa::all();
+        foreach ($tarefas as $tarefa)
+            print_r($tarefa->usuarios . "\n");
+        $queries = DB::getQueryLog();
+        foreach ($queries as $query)
+            print_r($query['query'] . ' - id: ' . $query['bindings'][0] . "\n" );
+        
+    }
+
+    public static function getEager()
+    {
+        $tarefas = Tarefa::with('usuarios')->get();
+        foreach ($tarefas as $tarefa)
+            print_r($tarefa->usuarios . "\n");
+        $queries = DB::getQueryLog();
+        foreach ($queries as $query)
+            print_r($query['query'] . "\n" );
+        
+    }
+
+
 }

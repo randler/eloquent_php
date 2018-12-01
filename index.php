@@ -5,14 +5,12 @@ require 'start.php';
 use Controllers\UsuarioController;
 use Controllers\TarefaController;
 
+
 // Adiconar usuário
 //$usuario = UsuarioController::novoUsuario('user1','user2@example.com');
 
 // Adicionar Tarefa
 //$tarefas = TarefaController::novaTarefa('Preparar a aula','Procurar um assunto que posso ser interessante', 6);
-
-//TarefaController::getLazy();
-//TarefaController::getEager();
 
 // Exibir tarefas dos usuários
 //$tarefas = UsuarioController::getTarefas();
@@ -26,3 +24,5 @@ use Controllers\TarefaController;
 // Apagar determinada tarefa do usuário
 //$tarefa = TarefaController::deleteTarefa(3);
 
+//Lazy & Eager loading
+TarefaController::getEager();

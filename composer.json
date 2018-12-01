@@ -3,7 +3,9 @@
     "description": "Implementação de pesquisas de Banco de dados com illuminate e eloquent",
     "type": "project",
     "require": {
-        "illuminate/database": "5.1.8"
+        "illuminate/database": "^5.7",
+        "illuminate/events": "^5.7",
+        "jenssegers/blade": "^1.1"
     },
     "autoload": {
         "psr-4": {
